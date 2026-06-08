@@ -32,6 +32,37 @@ let current = null;
 let dragTileEl = null;
 let slotsByIndex = [];
 
+function setupRemoveZone() {
+  const zone = $('#letterDropZone');
+  if (!zone) return;
+
+  zone.addEventListener('dragover', (ev) => {
+    ev.preventDefault();
+    zone.classList.add('over');
+  });
+
+  zone.addEventListener('dragleave', () => {
+    zone.classList.remove('over');
+  });
+
+  zone.addEventListener('drop', (ev) => {
+    ev.preventDefault();
+    zone.classList.remove('over');
+    if (!dragTileEl) return;
+
+    // Voltar para o banco (debaixo)
+    if (dragTileEl.parentElement) {
+      dragTileEl.parentElement.removeChild(dragTileEl);
+    }
+    $('#letterBank').appendChild(dragTileEl);
+
+    // Se o tile estava em algum slot, valida progresso e status
+    validateAll();
+  });
+
+}
+
+
 function setView(view) {
   if (view === 'auth') {
     $('#authPage').classList.remove('hidden');
@@ -101,19 +132,39 @@ function renderWordPuzzle({ word, img }) {
       ev.preventDefault();
       if (!dragTileEl) return;
 
-      // Só pode 1 letra por caixa
-      const existing = slot.querySelector('.tile');
-      if (existing && existing !== dragTileEl) return;
+      const fromSlot = dragTileEl.closest('.slot');
+      const toExisting = slot.querySelector('.tile');
 
-      // remove do lugar antigo
+      // Se o slot de destino já tem uma letra, só permite troca se a letra destino NÃO estiver correta.
+      if (toExisting && toExisting !== dragTileEl) {
+        const expectedDest = slot.dataset.expected;
+        const destIsCorrect = toExisting.textContent === expectedDest;
+        if (destIsCorrect) {
+          // Caixa correta não pode ser trocada
+          return;
+        }
+      }
+
+      // Se existe uma letra no slot destino (errada), jogamos ela de volta no banco
+      if (toExisting && toExisting !== dragTileEl) {
+        toExisting.remove();
+        $('#letterBank').appendChild(toExisting);
+      }
+
+      // Remove do lugar antigo
       if (dragTileEl.parentElement) {
         dragTileEl.parentElement.removeChild(dragTileEl);
       }
 
+      // Coloca na caixa
       slot.appendChild(dragTileEl);
       validateSlot(slot);
       validateAll();
     });
+
+
+
+
 
 
     answerRow.appendChild(slot);
@@ -254,6 +305,8 @@ function init() {
   // Game
   $('#nextBtn').addEventListener('click', startRound);
 
+  setupRemoveZone();
+
   const userRaw = localStorage.getItem('jp_user');
   if (userRaw) {
     setView('game');
@@ -265,4 +318,5 @@ function init() {
 }
 
 document.addEventListener('DOMContentLoaded', init);
+
 

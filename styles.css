@@ -293,6 +293,24 @@ a{ color:inherit; }
   flex-wrap:wrap;
 }
 
+.letter-drop-zone{
+  margin-top: 6px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px dashed rgba(255,255,255,.22);
+  background: rgba(255,255,255,.04);
+  color: var(--muted);
+  text-align:center;
+  width: min(520px, 100%);
+}
+
+.letter-drop-zone.over{
+  border-color: rgba(93,228,255,.55);
+  box-shadow: 0 0 0 4px rgba(93,228,255,.10);
+  color: var(--text);
+}
+
+
 .slot{
   width: 46px;
   height: 56px;
