@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jogo de Palavras</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="topbar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <h1>Palavras &amp; Drag</h1>
+      </div>
+      <div class="pill" id="userPill">—</div>
+    </div>
+
+    <!-- AUTH PAGE -->
+    <div id="authPage" class="auth-wrap card">
+      <div class="auth-title">
+        <h2>Entrar / Cadastrar</h2>
+      </div>
+
+      <div class="tabs" role="tablist" aria-label="Ações">
+        <div class="tab active" id="tabLogin" role="tab">Login</div>
+        <div class="tab" id="tabRegister" role="tab">Cadastro</div>
+      </div>
+
+      <form class="form" id="authForm">
+        <div class="field">
+          <label for="authEmail">Email</label>
+          <input id="authEmail" name="email" type="email" placeholder="voce@exemplo.com" required />
+        </div>
+
+        <div class="field">
+          <label for="authPassword">Senha</label>
+          <input id="authPassword" name="password" type="password" placeholder="Sua senha" required />
+        </div>
+
+        <div class="row">
+          <button class="btn" type="submit">Continuar</button>
+          <button class="btn secondary" type="button" id="demoBtn">Demo</button>
+        </div>
+
+        <div id="authMsg" class="msg"></div>
+      </form>
+
+    </div>
+
+    <!-- GAME PAGE -->
+    <div id="gamePage" class="game-wrap hidden">
+      <div class="game-stage">
+        <div class="game-header">
+          <div class="stat">Bem-vindo(a), <span id="welcomeName">Jogador</span></div>
+          <div class="stat">Score: <span id="scoreValue">0</span></div>
+        </div>
+
+        <div class="center">
+          <div class="hero-img" aria-label="Imagem do desafio">
+            <div class="shine" aria-hidden="true"></div>
+            <div id="heroEmoji" style="font-size:74px; transform: translateY(2px);">🍍</div>
+          </div>
+
+          <div class="word-puzzle">
+            <div class="instruction">
+              <strong>Arraste as letras</strong> para montar a palavra.
+            </div>
+
+            <div class="answer-row" id="answerRow" aria-label="Slots da palavra"></div>
+            <div class="instruction" style="margin-top:6px;" >
+              Progresso: <strong><span id="progressPercent">0%</span></strong>
+            </div>
+
+            <div class="letter-bank" id="letterBank" aria-label="Letras embaralhadas"></div>
+
+            <div class="instruction" id="hintText" style="margin-top:4px;"></div>
+
+            <div class="instruction" id="statusText" style="margin-top:6px; font-weight:700;">Em jogo</div>
+
+            <div class="actions">
+              <button class="small-btn primary" id="nextBtn" disabled>Próxima</button>
+              <button class="small-btn" id="logoutBtn">Sair</button>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
+
