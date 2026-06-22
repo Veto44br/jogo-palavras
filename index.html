@@ -11,21 +11,24 @@
     <div class="topbar">
       <div class="brand">
         <div class="logo" aria-hidden="true"></div>
-        <h1>Palavras &amp; Drag</h1>
+        <h1>Vamos formar palavras!</h1>
+
       </div>
       <div class="pill" id="userPill">—</div>
     </div>
 
     <!-- AUTH PAGE -->
-    <div id="authPage" class="auth-wrap card">
+    <div id="authPage" class="auth-wrap card hidden">
       <div class="auth-title">
+
         <h2>Entrar / Cadastrar</h2>
       </div>
 
-      <div class="tabs" role="tablist" aria-label="Ações">
+      <div class="tabs" role="tablist" aria-label="Ações" style="display:none;">
         <div class="tab active" id="tabLogin" role="tab">Login</div>
         <div class="tab" id="tabRegister" role="tab">Cadastro</div>
       </div>
+
 
       <form class="form" id="authForm">
         <div class="field">
@@ -40,8 +43,9 @@
 
         <div class="row">
           <button class="btn" type="submit">Continuar</button>
-          <button class="btn secondary" type="button" id="demoBtn">Demo</button>
+          <button class="btn secondary" type="button" id="demoBtn" style="display:none;">Demo</button>
         </div>
+
 
         <div id="authMsg" class="msg"></div>
       </form>
@@ -57,6 +61,7 @@
         </div>
 
         <div class="center">
+
           <div class="hero-img" aria-label="Imagem do desafio">
             <div class="shine" aria-hidden="true"></div>
             <div id="heroEmoji" style="font-size:74px; transform: translateY(2px);">🍍</div>
@@ -64,7 +69,8 @@
 
           <div class="word-puzzle">
             <div class="instruction">
-              <strong>Arraste as letras</strong> para montar a palavra.
+              <strong>Arraste as letrinhas</strong> para montar a palavra.
+
             </div>
 
             <div class="answer-row" id="answerRow" aria-label="Slots da palavra"></div>
@@ -75,7 +81,8 @@
             <div class="letter-bank" id="letterBank" aria-label="Letras embaralhadas"></div>
 
             <div id="letterDropZone" class="letter-drop-zone" aria-label="Área para devolver letra">
-              Soltar aqui para remover da caixa
+              Solte aqui para devolver à caixinha
+
             </div>
 
 

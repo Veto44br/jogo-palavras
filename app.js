@@ -1,11 +1,42 @@
 /* Jogo tipo “organize as letras” */
 
 const WORDS = [
+  // Frutas (mantidas)
   { word: 'ABACAXI', img: '🍍' },
   { word: 'BANANA', img: '🍌' },
   { word: 'MORANGO', img: '🍓' },
   { word: 'LARANJA', img: '🍊' },
-  { word: 'UVA', img: '🍇' }
+  { word: 'UVA', img: '🍇' },
+
+  // Animais
+  { word: 'GATO', img: '🐱' },
+  { word: 'CACHORRO', img: '🐶' },
+  { word: 'LEAO', img: '🦁' },
+  { word: 'ELEFANTE', img: '🐘' },
+  { word: 'MACACO', img: '🐵' },
+  { word: 'PATO', img: '🦆' },
+  { word: 'GALO', img: '🐓' },
+  { word: 'CAVALO', img: '🐴' },
+
+  // Objetos
+  { word: 'LIVRO', img: '📕' },
+  { word: 'CELULAR', img: '📱' },
+  { word: 'CARRO', img: '🚗' },
+  { word: 'AVIAO', img: '✈️' },
+  { word: 'BALAO', img: '🎈' },
+  { word: 'BOLA', img: '⚽' },
+  { word: 'LAPIS', img: '✏️' },
+  { word: 'CHUVEIRO', img: '🚿' },
+
+  // Cores
+  { word: 'VERMELHO', img: '🔴' },
+  { word: 'AZUL', img: '🔵' },
+  { word: 'AMARELO', img: '🟡' },
+  { word: 'VERDE', img: '🟢' },
+  { word: 'ROXO', img: '🟣' },
+  { word: 'PRETO', img: '⚫' },
+  { word: 'BRANCO', img: '⚪' },
+  { word: 'LARANJA', img: '🟠' }
 ];
 
 function shuffle(array) {
